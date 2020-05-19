@@ -6,5 +6,7 @@
 #Input: Year as an int.
 #Output: The list of most frequent days sorted by the order of days in week (from Monday to Sunday).
 
+from calendar import weekday, day_name
+
 def most_frequent_days(year):
     return [day_name[day] for day in sorted( {weekday(year, 1, 1), weekday(year, 12, 31)} ) ]
