@@ -89,5 +89,16 @@ def loop():
         for b in range(a, 1000):
             if check_if_triplet(a, b, (1000 - (a + b))):
                 return a * b * (1000 - (a + b))
+            
+###################################################################################################################################################
+#Find the sum of all the primes below two million.
 
+def eratosthenes2(n):
+    multiples = set()
+    for i in range(2, n + 1):
+        if i not in multiples:
+            yield i
+            multiples.update(range(i * i, n + 1, i))
+
+print(sum(list(eratosthenes2(2000000))))
 
