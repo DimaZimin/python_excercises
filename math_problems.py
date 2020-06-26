@@ -50,3 +50,28 @@ def sum_prod(num_str):
 #A main function that returns the largest adjecent product
 def largest_prod(adj_digits, big_num):
     return max(sum_prod(chunk) for chunk in cut_adj_chunks(str(big_num),adj_digits))
+
+
+#Print N prime numbers:
+#This checks if number is prime
+def is_prime(number):
+    if number >= 2:
+        for i in range(2, number):
+            if not (number % i):
+                return False
+    else:
+        return False
+    return True
+#this returns the N'th prime number (NOT OPTIMISED SOLUTION)
+def n_prime(quantity):
+    primes = []
+    n = 2
+    while len(primes) != quantity:
+        for i in range(n, n + 1):
+            if is_prime(i):
+                primes.append(i)
+                n += 1
+                print(primes)
+            else:
+                n += 1
+    return primes[-1]
