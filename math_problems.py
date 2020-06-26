@@ -31,3 +31,22 @@ def squareofthesum():
     return sum([x for x in range(1, 101)])**2
 print(squareofthesum() - sumofsq())
 #25164150
+
+
+#Find N adjacent digits in the Y number that have the greatest product. What is the value of this product?
+# Y - iterable (big_num), X - N chunk size(adj_digits)
+
+from functools import reduce
+import operator
+
+#This functions cuts a big number into evenly sized chunks of adjacent digits
+def cut_adj_chunks(iterable, chunk_size):
+    for i in range(len(iterable) - chunk_size):
+        yield iterable[i:i + chunk_size]
+# This sums the product of the chunks
+def sum_prod(num_str):
+    num_list = map(int, num_str)
+    return reduce(operator.mul, num_list, 1)
+#A main function that returns the largest adjecent product
+def largest_prod(adj_digits, big_num):
+    return max(sum_prod(chunk) for chunk in cut_adj_chunks(str(big_num),adj_digits))
